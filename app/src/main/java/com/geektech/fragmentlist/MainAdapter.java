@@ -12,18 +12,21 @@ import java.util.ArrayList;
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     ArrayList<String> data = new ArrayList<>();
-
+OnResult listener;
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View v = inflater.inflate(R.layout.view_holder_main, parent, false);
-        return new MainViewHolder(v);
+        MainViewHolder mvh = new MainViewHolder(v);
+        mvh.listener =listener;
+        return mvh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         holder.textView.setText(data.get(position));
+        holder.result = holder.textView.getText().toString();
     }
 
     @Override

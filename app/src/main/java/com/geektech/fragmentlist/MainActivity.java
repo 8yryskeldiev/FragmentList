@@ -3,7 +3,9 @@ package com.geektech.fragmentlist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity implements IInputFragment {
 
@@ -23,5 +25,12 @@ public class MainActivity extends AppCompatActivity implements IInputFragment {
     @Override
     public void onInputNumber(int number) {
         mainFragment.fullList(number);
+    }
+
+    public void onViewClick(String s) {
+        Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+        intent.putExtra("result", s);
+        startActivity(intent);
+        Log.d("ololo",s);
     }
 }
